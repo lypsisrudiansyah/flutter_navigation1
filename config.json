@@ -1,0 +1,11 @@
+{
+    "modules": [
+        "login",
+        "dashboard"
+    ],
+    "module_directory_name": "module",
+    "experimental_mode": false,
+    "learning_mode": false,
+    "unfreezed": true,
+    "use_cubit": false
+}
