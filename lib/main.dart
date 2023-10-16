@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_navigation1/core.dart';
+import 'package:flutter_navigation1/router/app_router.dart';
 import 'package:flutter_navigation1/state_util.dart';
 
 void main() {
@@ -13,12 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Navigation Practice',
       navigatorKey: Get.navigatorKey,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginView()
+      initialRoute: '/',
+      routes: AppRoute().routes,
     );
   }
 }

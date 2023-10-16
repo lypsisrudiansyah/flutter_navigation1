@@ -59,23 +59,37 @@ class LoginView extends StatefulWidget {
                 onChanged: (value) {},
               ),
               const SizedBox(height: 20),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: 40,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const DashboardView()),
-                    );
-
-                    /* Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const DashboardView()),
-                    ); */
-                  },
-                  child: const Text("Login"),
+              LoginButtonNavigation(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DashboardView(),
+                  ),
                 ),
+                buttonText: "Login Nav Push",
+              ),
+              LoginButtonNavigation(
+                onPressed: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DashboardView(),
+                  ),
+                ),
+                buttonText: "Login Nav Replace",
+              ),
+              LoginButtonNavigation(
+                onPressed: () => Navigator.pushNamed(
+                  context,
+                  "/dashboard",
+                ),
+                buttonText: "Login Nav PushNamed",
+              ),
+              LoginButtonNavigation(
+                onPressed: () => Navigator.pushReplacementNamed(
+                  context,
+                  "/dashboard",
+                ),
+                buttonText: "Login Nav ReplaceNamed",
               ),
             ],
           ),
@@ -86,4 +100,24 @@ class LoginView extends StatefulWidget {
 
   @override
   State<LoginView> createState() => LoginController();
+}
+
+class LoginButtonNavigation extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String buttonText;
+
+  const LoginButtonNavigation({super.key, required this.onPressed, required this.buttonText});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 10),
+      width: MediaQuery.of(context).size.width,
+      height: 40,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        child: Text(buttonText),
+      ),
+    );
+  }
 }
