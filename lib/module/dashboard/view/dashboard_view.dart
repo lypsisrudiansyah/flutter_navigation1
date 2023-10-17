@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_navigation1/core.dart';
+import 'package:flutter_navigation1/shared/util/bottom_sheet/bottom_sheet_handler.dart';
 import 'package:flutter_navigation1/shared/util/dialog/dialog_handler.dart';
 import 'package:flutter_navigation1/shared/util/loading/loading_handler.dart';
 import '../controller/dashboard_controller.dart';
@@ -50,6 +51,7 @@ class DashboardView extends StatefulWidget {
                   onPressed: () async {
                     var snackBar = SnackBar(
                       // & these 2 line on param behavior and margin is for floating snackbar, like example you want to put it on upper side of screen
+                      duration: const Duration(milliseconds: 500),
                       behavior: SnackBarBehavior.floating,
                       margin: EdgeInsets.only(
                         bottom: MediaQuery.of(context).size.height * 0.8,
@@ -79,7 +81,7 @@ class DashboardView extends StatefulWidget {
                 height: 40,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    BottomSheetHandler.showBottomSheet(context);
                   },
                   child: const Text("Bottom Sheet"),
                 ),
@@ -89,10 +91,11 @@ class DashboardView extends StatefulWidget {
                 width: MediaQuery.of(context).size.width,
                 height: 40,
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     LoadingHandler.showLoading(context);
-                    Future.delayed(const Duration(seconds: 2), () {});
-                    LoadingHandler.hideLoading(context);
+                    await Future.delayed(const Duration(seconds: 1), () {
+                      LoadingHandler.hideLoading(context);
+                    });
                   },
                   child: const Text("Show Loading"),
                 ),
