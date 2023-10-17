@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_navigation1/core.dart';
+import 'package:flutter_navigation1/shared/util/dialog/dialog_handler.dart';
+import 'package:flutter_navigation1/shared/util/loading/loading_handler.dart';
 import '../controller/dashboard_controller.dart';
 
 class DashboardView extends StatefulWidget {
@@ -34,48 +36,7 @@ class DashboardView extends StatefulWidget {
                 height: 40,
                 child: ElevatedButton(
                   onPressed: () async {
-                    bool confirm = false;
-                    await showDialog<void>(
-                      context: context,
-                      barrierDismissible: false,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: const Text('Confirm'),
-                          content: SingleChildScrollView(
-                            child: ListBody(
-                              children: const <Widget>[
-                                Text('Are you sure you want to delete this item?'),
-                              ],
-                            ),
-                          ),
-                          actions: <Widget>[
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.grey[600],
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text("No"),
-                            ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blueGrey,
-                              ),
-                              onPressed: () {
-                                confirm = true;
-                                Navigator.pop(context);
-                              },
-                              child: const Text("Yes"),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-
-                    if (confirm) {
-                      print("Confirmed!");
-                    }
+                    DialogHandler.showDialogConfirm(context, "Are you sure you want to delete this item 22 ?");
                   },
                   child: const Text("Dialog"),
                 ),
@@ -121,6 +82,19 @@ class DashboardView extends StatefulWidget {
                     Navigator.pop(context);
                   },
                   child: const Text("Bottom Sheet"),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: 40,
+                child: ElevatedButton(
+                  onPressed: () {
+                    LoadingHandler.showLoading(context);
+                    Future.delayed(const Duration(seconds: 2), () {});
+                    LoadingHandler.hideLoading(context);
+                  },
+                  child: const Text("Show Loading"),
                 ),
               ),
               const SizedBox(height: 10),

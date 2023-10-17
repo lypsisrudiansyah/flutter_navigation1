@@ -10,9 +10,17 @@ class LoadingHandler {
           title: const Text('Info'),
           content: SingleChildScrollView(
             child: ListBody(
-              children: const <Widget>[
-                CircularProgressIndicator(),
-                Text('Loading...'),
+              children: <Widget>[
+                Column(
+                  children: const [
+                    SizedBox(
+                      height: 50,
+                      width: 50,
+                      child: CircularProgressIndicator(),
+                    ),
+                  ],
+                ),
+                const Text('Loading...'),
               ],
             ),
           ),
