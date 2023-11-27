@@ -1,6 +1,23 @@
 # flutter_navigation1
 
-A new Flutter project.
+## Previews
+
+### 1. Login View
+<img src="previews/login_view.png" alt="alt text" height="350">
+
+### 2. Dialog - Snackbar - BottomSheet 
+
+[![Dialog - Snackbar - BottomSheet](https://img.youtube.com/vi/5WaRTn1i6SM/0.jpg)](https://www.youtube.com/watch?v=5WaRTn1i6SM)
+
+### 3. GO Router - Navigator 2.0 
+
+[![GO Router - Navigator 2.0](https://img.youtube.com/vi/jR8vC3Fi63M/0.jpg)](https://www.youtube.com/watch?v=jR8vC3Fi63M)
+
+### 4. Go Router on Web Mode
+[![ Go Router on Web Mode](https://img.youtube.com/vi/O4MlWyDLEYo/0.jpg)](https://www.youtube.com/watch?v=O4MlWyDLEYo)
+
+
+
 
 ## Getting Started
 
